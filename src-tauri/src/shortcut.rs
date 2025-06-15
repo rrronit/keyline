@@ -5,7 +5,7 @@ use tauri_plugin_global_shortcut::{
     Code, GlobalShortcutExt, Modifiers, ShortcutEvent, ShortcutState,
 };
 
-use crate::{app::AppState, error::AppResult};
+use crate::{error::AppResult, SharedAppState};
 
 #[derive(Clone)]
 pub struct Shortcut;
@@ -77,7 +77,7 @@ impl Shortcut {
         let window = app
             .get_webview_window("main")
             .ok_or_else(|| crate::error::AppError::Window("Main window not found".into()))?;
-        let app_state = app.try_state::<Mutex<AppState>>();
+        let app_state = app.try_state::<SharedAppState>();
         if let Some(app_state) = app_state {
             if app_state.lock().unwrap().visible {
                 app.emit("close-window", "").unwrap();

@@ -26,8 +26,6 @@ export const ResultList = ({
 }: ResultListProps) => {
 	const listRef = useRef<HTMLDivElement>(null);
 
-  
-
 	useEffect(() => {
 		if (listRef.current && selectedIndex >= 0) {
 			const selectedElement = listRef.current.children[
@@ -78,7 +76,7 @@ export const ResultList = ({
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.3, delay: 0.1 }}
-					className="flex flex-col items-center justify-center py-16 text-zinc-400 "
+					className="flex flex-col items-center justify-center py-16 text-zinc-400"
 				>
 					<motion.div
 						className="relative mb-4"
@@ -90,55 +88,46 @@ export const ResultList = ({
 						}}
 					>
 						<Search className="w-8 h-8 opacity-40" />
+						<div className="absolute inset-0 bg-blue-500/20 rounded-full blur-lg"></div>
 					</motion.div>
-					<p className="text-lg font-medium text-zinc-300">
-						Loading...
-					</p>
+					<p className="text-lg font-medium text-zinc-300">Loading...</p>
+				</motion.div>
+			) : results.length === 0 ? (
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.3, delay: 0.1 }}
+					className="flex flex-col items-center justify-center py-16 text-zinc-400"
+				>
+					<motion.div
+						className="relative mb-4"
+						animate={{ rotate: [0, 360] }}
+						transition={{
+							duration: 2,
+							repeat: Infinity,
+							ease: "linear",
+						}}
+					>
+						<Search className="w-8 h-8 opacity-40" />
+						<div className="absolute inset-0 bg-blue-500/20 rounded-full blur-lg"></div>
+					</motion.div>
+					<p className="text-lg font-medium text-zinc-300">No results found</p>
+					<p className="text-sm text-zinc-500 mt-1">Try a different search term</p>
 				</motion.div>
 			) : (
-				<div className="py-2 max-h-96 overflow-hidden scrollbar">
-					{results.length === 0 ? (
-						<motion.div
-							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.3, delay: 0.1 }}
-							className="flex flex-col items-center justify-center py-16 text-zinc-400"
-						>
-							<motion.div
-								className="relative mb-4"
-								animate={{ rotate: [0, 360] }}
-								transition={{
-									duration: 2,
-									repeat: Infinity,
-									ease: "linear",
-								}}
-							>
-								<Search className="w-8 h-8 opacity-40" />
-								<div className="absolute inset-0 bg-zinc-500/20 rounded-full blur-lg"></div>
-							</motion.div>
-							<p className="text-lg font-medium text-zinc-300">
-								No results found
-							</p>
-							<p className="text-sm text-zinc-500 mt-1">
-								Try a different search term
-							</p>
+				<div
+					ref={listRef}
+					className="py-2 max-h-96 overflow-y-auto overflow-x-hidden scrollbar"
+				>
+					{results.map((item, index) => (
+						<motion.div key={item.id}>
+							<ResultItem
+								item={item}
+								isSelected={index === selectedIndex}
+								onSelect={() => onSelect(index)}
+							/>
 						</motion.div>
-					) : (
-						<div
-							ref={listRef}
-							className="py-2 max-h-96 overflow-y-auto overflow-x-hidden scrollbar"
-						>
-							{results.map((item, index) => (
-								<motion.div key={item.id}>
-									<ResultItem
-										item={item}
-										isSelected={index === selectedIndex}
-										onSelect={() => onSelect(index)}
-									/>
-								</motion.div>
-							))}
-						</div>
-					)}
+					))}
 				</div>
 			)}
 

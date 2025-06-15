@@ -11,7 +11,7 @@ interface UseKeyboardEventsProps {
 	selectedIndex: number;
 	setSelectedIndex: React.Dispatch<React.SetStateAction<number>>;
 	filteredResults: any[];
-	mode: string;
+	inputRef: React.RefObject<HTMLInputElement>;
 }
 
 export const useKeyboardEvents = ({
@@ -20,11 +20,14 @@ export const useKeyboardEvents = ({
 	selectedIndex,
 	setSelectedIndex,
 	filteredResults,
+	inputRef,
 }: UseKeyboardEventsProps) => {
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
 			if (e.key === "Enter") {
-				console.log("Selected:", filteredResults[selectedIndex]);
+				invoke("handle_search", { query: state.query });
+				invoke("close_window");
+				setState((_) => ({ query: "", mode: "search" }));
 			}
 
 			if (e.key === "ArrowDown" && state.mode === "result") {
@@ -50,7 +53,7 @@ export const useKeyboardEvents = ({
 			}
 
 			if (/^[a-zA-Z0-9\s]$/.test(e.key)) {
-				console.log(e.key);
+				inputRef.current?.focus();
 				setState((prev) => ({ ...prev, mode: "search" }));
 			}
 
@@ -59,6 +62,7 @@ export const useKeyboardEvents = ({
 					setState((prev) => ({ ...prev, mode: "search" }));
 				} else {
 					invoke("close_window");
+					setState((_) => ({ query: "", mode: "search" }));
 				}
 			}
 		};
@@ -73,5 +77,4 @@ export const useKeyboardEvents = ({
 		setState,
 		setSelectedIndex,
 	]);
-
 };

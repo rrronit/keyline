@@ -100,13 +100,14 @@ function App() {
 		selectedIndex,
 		setSelectedIndex,
 		filteredResults,
-		mode: state.mode,
+		inputRef,
 	});
 
 	const closeSearch = async (e: React.MouseEvent<HTMLDivElement>) => {
 		e.stopPropagation();
 		e.preventDefault();
 		await invoke("close_window");
+		setState((_) => ({ query: "", mode: "search" }));
 	};
 
 	// Animation variants
@@ -115,14 +116,14 @@ function App() {
 		visible: {
 			opacity: 1,
 			transition: {
-				duration: 0.15,
+				duration: 0.2,
 				ease: "easeOut" as const,
 			},
 		},
 		exit: {
 			opacity: 0,
 			transition: {
-				duration: 0.1,
+				duration: 0.15,
 				ease: "easeIn" as const,
 			},
 		},
@@ -132,18 +133,21 @@ function App() {
 		hidden: {
 			opacity: 0,
 			y: 20,
+			scale: 0.98,
 		},
 		visible: {
 			opacity: 1,
 			y: 0,
+			scale: 1,
 			transition: {
-				duration: 0.3,
+				duration: 0.25,
 				ease: "easeOut" as const,
 			},
 		},
 		exit: {
 			opacity: 0,
 			y: 10,
+			scale: 0.99,
 			transition: {
 				duration: 0.2,
 				ease: "easeIn" as const,
@@ -159,7 +163,7 @@ function App() {
 					initial="hidden"
 					animate="visible"
 					exit="exit"
-					className="min-h-screen bg-gradient-to-br from-zinc-900/30 via-zinc-900/25 to-zinc-900/50 flex items-start justify-center px-4 relative overflow-hidden bg-[length:100%_100%]"
+					className="min-h-screen bg-black/25 backdrop-blur-2xl flex items-start justify-center px-4"
 					onClick={closeSearch}
 				>
 					<motion.div
@@ -172,13 +176,16 @@ function App() {
 					>
 						<motion.div
 							onClick={(e) => e.stopPropagation()}
-							className="backdrop-blur-2xl bg-zinc-900/90 border border-zinc-700/50 rounded-2xl shadow-2xl overflow-hidden ring-1 ring-white/10 transition-all duration-300 hover:ring-white/20"
+							className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-2xl overflow-hidden"
 							style={{
-								boxShadow:
-									"0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05)",
+								boxShadow: `
+									0 20px 25px -5px rgba(0, 0, 0, 0.3),
+									0 10px 10px -5px rgba(0, 0, 0, 0.15),
+									0 0 0 1px rgba(255, 255, 255, 0.05)
+								`,
 							}}
 							whileHover={{
-								scale: 1.002,
+								y: -2,
 								transition: { duration: 0.2 },
 							}}
 						>

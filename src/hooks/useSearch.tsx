@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { SearchState, ResultItem } from "../types";
+import { invoke } from "@tauri-apps/api/core";
 
 // Sample data moved from App.tsx
 
@@ -14,28 +15,7 @@ export const useSearch = ({sampleResults}: {sampleResults: ResultItem[]}) => {
 
 	useEffect(() => {
 		if (state.query.trim()) {
-			setLoading(true);
-			setState((prev) => ({ ...prev, mode: "result" }));
-
-			// Simulate network delay
-			const timeout = setTimeout(() => {
-				const filtered = sampleResults.filter(
-					(item) =>
-						item.title
-							.toLowerCase()
-							.includes(state.query.toLowerCase()) ||
-						item.subtitle
-							.toLowerCase()
-							.includes(state.query.toLowerCase()) ||
-						item.category
-							.toLowerCase()
-							.includes(state.query.toLowerCase())
-				);
-				setFilteredResults(filtered);
-				setLoading(false);
-			}, 30);
-
-			return () => clearTimeout(timeout);
+			// invoke("handle_search", { query: state.query });
 		} else {
 			setFilteredResults(sampleResults);
 			setState((prev) => ({ ...prev, mode: "search" }));

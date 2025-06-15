@@ -1868,6 +1868,7 @@ dependencies = [
 name = "keyline"
 version = "0.0.0"
 dependencies = [
+ "keyline-parser",
  "serde",
  "serde_json",
  "tauri",
@@ -1875,6 +1876,14 @@ dependencies = [
  "tauri-plugin-global-shortcut",
  "tauri-plugin-opener",
  "thiserror 2.0.12",
+]
+
+[[package]]
+name = "keyline-parser"
+version = "0.1.0"
+dependencies = [
+ "lazy_static",
+ "regex",
 ]
 
 [[package]]
