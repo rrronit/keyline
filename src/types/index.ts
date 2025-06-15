@@ -1,8 +1,8 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 export interface SearchState {
   query: string;
-  mode: "search" | "result" | "settings";
+  mode: 'search' | 'result' | 'settings';
 }
 
 export interface ResultItem {
@@ -22,6 +22,6 @@ export interface SettingItem {
   category: string;
   color: string;
   value: boolean | string | number;
-  type: "toggle" | "select" | "input";
+  type: 'toggle' | 'select' | 'input';
   options?: string[];
-} 
+}

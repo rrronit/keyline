@@ -1,15 +1,15 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
 
 export interface SearchState {
-    query: string;
-    mode: "search" | "result" | "settings";
+  query: string;
+  mode: 'search' | 'result' | 'settings';
 }
 
 export interface ResultItem {
-    id: string;
-    title: string;
-    subtitle: string;
-    icon: ReactNode;
-    category: string;
-    color: string;
-} 
+  id: string;
+  title: string;
+  subtitle: string;
+  icon: ReactNode;
+  category: string;
+  color: string;
+}

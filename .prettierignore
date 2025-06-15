@@ -1,0 +1,20 @@
+# Tauri
+src-tauri/
+
+# Build output
+dist/
+build/
+
+# Dependencies
+node_modules/
+
+# Cache
+.cache/
+.next/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.* 

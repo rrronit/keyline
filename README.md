@@ -7,13 +7,15 @@ A lightning-fast productivity launcher built with Rust. Inspired by Raycast, bui
 ## 🎯 v0.1 Roadmap
 
 ### 🏗️ Core Foundation
-- [ ] Set up basic Rust project structure
-- [ ] Create main window with show/hide functionality
-- [ ] Global hotkey registration (Cmd+Space / Alt+Space)
+
+- [x] Set up basic Rust project structure
+- [x] Create main window with show/hide functionality
+- [x] Global hotkey registration (Cmd+Space)
 - [ ] Basic input field and results list UI
 - [ ] Keyboard navigation (up/down arrows, enter, escape)
 
 ### 🚀 Essential Launcher Features
+
 - [ ] Application launcher
   - [ ] Scan installed applications on system
   - [ ] Fuzzy search through app names
@@ -24,13 +26,14 @@ A lightning-fast productivity launcher built with Rust. Inspired by Raycast, bui
   - [ ] Open file in default application
 - [ ] System commands
   - [ ] Sleep system
-  - [ ] Lock screen  
+  - [ ] Lock screen
   - [ ] Restart system
   - [ ] Shutdown system
 
 ### 🧮 Basic Utilities
+
 - [ ] Calculator
-  - [ ] Parse basic math expressions (2+2, 10*5, etc.)
+  - [ ] Parse basic math expressions (2+2, 10\*5, etc.)
   - [ ] Display result in search results
   - [ ] Copy result to clipboard
 - [ ] Clipboard history
@@ -39,12 +42,14 @@ A lightning-fast productivity launcher built with Rust. Inspired by Raycast, bui
   - [ ] Restore selected clipboard item
 
 ### ⚙️ Core Infrastructure
+
 - [ ] Search result ranking system
 - [ ] Configuration file (JSON/TOML)
 - [ ] Basic error handling and logging
 - [ ] Cross-platform compatibility (Windows, macOS, Linux)
 
 ### 🎨 Basic UI/UX
+
 - [ ] Clean, minimal interface design
 - [ ] Dark theme support
 - [ ] Basic animations (fade in/out)
@@ -54,6 +59,7 @@ A lightning-fast productivity launcher built with Rust. Inspired by Raycast, bui
 ## 🚀 v0.2 Roadmap
 
 ### 🔧 Enhanced System Integration
+
 - [ ] Process manager
   - [ ] List running processes
   - [ ] Kill processes by name
@@ -69,6 +75,7 @@ A lightning-fast productivity launcher built with Rust. Inspired by Raycast, bui
   - [ ] Close windows from launcher
 
 ### 🌐 Web & Network Features
+
 - [ ] Weather lookup
   - [ ] Current weather by location
   - [ ] Quick weather command (weather london)
@@ -81,6 +88,7 @@ A lightning-fast productivity launcher built with Rust. Inspired by Raycast, bui
   - [ ] WiFi network scanner
 
 ### 🧮 Advanced Utilities
+
 - [ ] Unit converter
   - [ ] Length, weight, temperature conversions
   - [ ] Currency conversion (with live rates)
@@ -96,6 +104,7 @@ A lightning-fast productivity launcher built with Rust. Inspired by Raycast, bui
   - [ ] Text case conversions
 
 ### 📋 Productivity Enhancements
+
 - [ ] Snippet expansion
   - [ ] Create custom text snippets
   - [ ] Trigger snippets with keywords
@@ -110,6 +119,7 @@ A lightning-fast productivity launcher built with Rust. Inspired by Raycast, bui
   - [ ] Desktop notifications
 
 ### ⚙️ Configuration & Customization
+
 - [ ] Settings panel
   - [ ] Customize hotkeys
   - [ ] Theme selection (light/dark/custom)
@@ -124,8 +134,9 @@ A lightning-fast productivity launcher built with Rust. Inspired by Raycast, bui
   - [ ] Indexing preferences
 
 ### 🎨 UI/UX Improvements
+
 - [ ] Multiple themes
-- [ ] Custom CSS/styling options  
+- [ ] Custom CSS/styling options
 - [ ] Result previews
   - [ ] File previews
   - [ ] Image thumbnails
@@ -133,4 +144,3 @@ A lightning-fast productivity launcher built with Rust. Inspired by Raycast, bui
 - [ ] Better animations and transitions
 - [ ] Command history and suggestions
 - [ ] Fuzzy search improvements
-
